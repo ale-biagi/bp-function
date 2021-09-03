@@ -15,7 +15,7 @@ const manageBP = require('./manage-bp.js');
  module.exports = async function (event, context) {
      let msg;
      try {
-        msg = JSON.parse(JSON.stringify(event.data));
+        msg = JSON.parse(event.data);
      } catch (e) {
          if (event.data) {
              msg = event.data
