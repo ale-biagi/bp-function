@@ -15,7 +15,7 @@ const manageBP = require('./manage-bp.js');
  module.exports = async function (event, context) {
      let msg;
      try {
-        msg = JSON.parse(event.data);
+        msg = JSON.parse(JSON.stringify(event.data));
      } catch (e) {
          if (event.data) {
              msg = event.data
@@ -24,7 +24,7 @@ const manageBP = require('./manage-bp.js');
              return "Looks like there is some issue with the data format. Expected data format: JSON/String";
          }
      }
-     const res = manageBP.executeOperation(msg);
+     const res = await manageBP.executeOperation(msg);
      return res;
  }
  
