@@ -24,6 +24,7 @@ const manageBP = require('./manage-bp.js');
              return "Looks like there is some issue with the data format. Expected data format: JSON/String";
          }
      }
+     console.log("msg:", msg);
      const res = await manageBP.executeOperation(msg);
      return res;
  }
