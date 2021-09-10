@@ -15,25 +15,14 @@ async function executeOperation(msg) {
     const destName = (process.env.destination) ? JSON.parse(process.env.destination).name : "S4HC";
     const req = BusinessPartner.requestBuilder();
 
-    let businessPartner;
-    if (msg.method.toUpperCase() === 'POST') {
-        businessPartner = BusinessPartner
-            .builder()
-            .firstName(msg.entity.FirstName)
-            .lastName(msg.entity.LastName)
-            .birthDate(moment(msg.entity.BirthDate))
-            .businessPartnerCategory("1")
-            .build();
-    } else {
-        businessPartner = BusinessPartner
-            .builder()
-            .businessPartner(msg.entity.BusinessPartner)
-            .firstName(msg.entity.FirstName)
-            .lastName(msg.entity.LastName)
-            .birthDate(moment(msg.entity.BirthDate))
-            .businessPartnerCategory("1")
-            .build();
-    }
+    const businessPartner = BusinessPartner
+        .builder()
+        .businessPartner(msg.entity.BusinessPartner)
+        .firstName(msg.entity.FirstName)
+        .lastName(msg.entity.LastName)
+        .birthDate(moment(msg.entity.BirthDate))
+        .businessPartnerCategory("1")
+        .build();
 
     let operation;
 
